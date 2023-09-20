@@ -1,10 +1,30 @@
+// import { createServer } from "node:http"
+
+// const server = createServer((resquest, response) => {
+//     response.write('Hello World!')
+//     return response.end()
+// })
+
+// server.listen(3333)
+
 import { fastify } from 'fastify';
+// import { DatabaseMemory } from './database-memory.js';
 import { DatabasePostgres } from './database-postgres.js';
 
 
 const server = fastify()
 
+// GET, POST, PUT, DELETE, PATCH
+
+// POST http://localhost:3333/videos
+// PUT http://localhost:3333/videos/3
+
+// Route Parameter
+
+// const database = new DatabaseMemory()
 const database = new DatabasePostgres()
+
+// Request Body
 
 server.post('/videos', async (request, reply) => {
     const { title, description, duration } = request.body
